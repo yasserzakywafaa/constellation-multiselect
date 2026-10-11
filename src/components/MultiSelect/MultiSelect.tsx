@@ -68,9 +68,9 @@ const MultiSelectControl = ({
   // Focus stays on the trigger, so the browser won't scroll for us.
   useEffect(() => {
     if (!isOpen || activeIndex < 0) return;
-    document
-      .getElementById(optionId(activeIndex))
-      ?.scrollIntoView({ block: "nearest" });
+    const option = document.getElementById(optionId(activeIndex));
+    if (typeof option?.scrollIntoView !== "function") return;
+    option.scrollIntoView({ block: "nearest" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, activeIndex]);
 

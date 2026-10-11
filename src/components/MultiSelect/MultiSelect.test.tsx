@@ -69,7 +69,7 @@ describe("MultiSelect", () => {
     const { combobox, onChange } = renderMultiSelect();
 
     await user.click(combobox);
-    await user.click(screen.getByRole("option", { name: "TypeScript" }));
+    await user.click(screen.getByRole("option", { name: ".NET" }));
     expect(onChange).not.toHaveBeenCalled();
   });
 
