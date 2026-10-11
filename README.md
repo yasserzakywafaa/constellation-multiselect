@@ -44,7 +44,7 @@ src/
 2. [x] Tooling: Yarn, TS, Storybook 8, Vitest + RTL, ESLint
 3. [x] Theme tokens + typed theme
 4. [x] Primitives with stories
-5. [ ] Hooks
+5. [x] Hooks
 
 ### Out of scope (next steps)
 
