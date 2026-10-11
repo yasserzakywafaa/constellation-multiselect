@@ -1,16 +1,23 @@
-# constellation-multiselect
+# constellation-multiselect 🚗
 
-Technical test for a Senior Design System Developer: a custom **Multi-Select** built with
-React 18, Styled Components 6, TypeScript 5, Storybook 8, Vitest + React Testing Library, Yarn.
+A small, slightly obsessive design-system challenge, written for my friends at
+[Constellation Automotive](https://www.constellationautomotive.com/).
+
+You already know how to ship product. This one is the other job: a custom
+**Multi-Select** that could live in a real design system — composed, accessible,
+and themeable, so the next control starts from the same pieces.
+
+**Stack:** React 18 · Styled Components 6 · TypeScript 5 · Storybook 8 · Vitest +
+React Testing Library · Yarn
 
 ## 1. Plan
 
 ### Ideas
 
-- Treat the Multi-Select as a **composition of reusable primitives**, not a monolith. Any future
+- Treat the Multi-Select as a **composition of reusable primitives**. Any future
   input (Select, Combobox, DatePicker, TagInput) should be able to reuse the same pieces.
 - Use the native `<select multiple>` as the behavioural reference (value model, `name`, disabled,
-  form participation), but render a custom, accessible UI following the WAI-ARIA
+  form participation), and render a custom, accessible UI following the WAI-ARIA
   [Listbox pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/).
 - Keep focus on a single trigger element and drive the list with `aria-activedescendant`
   (no roving focus), so screen readers announce the active option while focus stays put.
@@ -54,24 +61,30 @@ src/
 
 Search / combobox filtering, option groups, async options, virtualisation, select-all, max selections.
 
-## 2. Decisions & trade-offs
+## 2. Decisions & trade-offs ⚖️
 
 - **WAI-ARIA combobox + listbox**: focus stays on the trigger and `aria-activedescendant` points to the active option.
-- **Selection is a `string[]`, not a `Set`**: it is simple to pass to `onChange` and works like native `<select multiple>`; values stay in option order.
-- **Selected values show as `Tag`s inside the `InputBox`**; the remove button stops the click so the list does not open or close.
+- **Selection is a `string[]`**: it is simple to pass to `onChange` and works like native `<select multiple>`; values stay in option order.
+- **Selected values show as `Tag`s inside the `InputBox`**; the remove button stops the click so the list stays put.
 - **Controlled and uncontrolled** with `useControllableState` (`value` / `defaultValue` / `onChange`), like native inputs.
 - **Escape is handled in one place**: only the component closes the list with `useDisclosure` (Escape, Tab, blur); `Popover` handles outside click and renders in a portal so `overflow: hidden` can't cut it.
 
-## 3. Discoveries
+## 3. Discoveries 🔍
 
 - Option and box clicks must `preventDefault` on `mousedown`, or the trigger blurs and the list closes before the click lands.
 - Extracting the hooks before the component made `MultiSelect` mostly wiring, and each behaviour is testable on its own.
-- Typing `DefaultTheme` in `styled.d.ts` turns a wrong token name into a compile error instead of a silent `undefined`.
+- Typing `DefaultTheme` in `styled.d.ts` turns a wrong token name into a compile error.
 - RTL's `userEvent` plus `aria-activedescendant` lookups test keyboard flows the way a screen reader experiences them.
 
-## 4. Outstanding tasks
+## 4. Outstanding tasks ✨
 
 - Stories: Preselected, Disabled, Error, LongList.
 - Backspace on an empty trigger removes the last tag.
 - Move the popover on scroll/resize and open it above when there is no space below.
 - Tests for error text and the disabled state, plus barrel exports and a library build.
+
+---
+
+Have a look around Storybook, the interesting bits are in the `primitives`. 👋
+
+Made with love and coffee ☕ by [Yasser](https://www.yasserzaky.com), for my friends at [Constellation Automotive](https://www.constellationautomotive.com/).
