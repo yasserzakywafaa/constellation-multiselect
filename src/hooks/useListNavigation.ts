@@ -4,7 +4,6 @@ interface UseListNavigationOptions {
   items: { disabled?: boolean }[];
   /** Called with the active index on Enter or Space. */
   onSelect: (index: number) => void;
-  /** Wrap from last to first and back. Defaults to true. */
   loop?: boolean;
 }
 

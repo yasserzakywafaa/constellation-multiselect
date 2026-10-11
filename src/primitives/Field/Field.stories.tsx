@@ -28,7 +28,7 @@ const ConnectedInput = () => {
 const meta = {
   title: "Primitives/Field",
   component: Field,
-  args: { label: "Favourite fruits", children: <ConnectedInput /> },
+  args: { label: "Tech Stack for Yasser", children: <ConnectedInput /> },
 } satisfies Meta<typeof Field>;
 
 export default meta;
@@ -37,7 +37,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const WithHelperText: Story = {
-  args: { helperText: "Pick as many as you like." },
+  args: { helperText: "Pick as many as Yasser likes." },
 };
 
 export const Required: Story = {
@@ -45,5 +45,5 @@ export const Required: Story = {
 };
 
 export const WithError: Story = {
-  args: { required: true, error: "Please choose at least one fruit." },
+  args: { required: true, error: "Please choose at least one tech stack." },
 };

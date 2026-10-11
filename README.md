@@ -31,7 +31,7 @@ src/
 | ---------------------- | ----------------------------------------------------------------------- | ------------------------------ |
 | `Field`                | label / helper / error + id wiring (`aria-describedby`, `aria-invalid`) | every input                    |
 | `InputBox`             | trigger box, focus/disabled/error visuals                               | Select, Combobox, DatePicker   |
-| `Popover`              | open/close, outside click, Escape, focus return                         | Select, Menu, DatePicker       |
+| `Popover`              | open/close, outside click, focus return                                 | Select, Menu, DatePicker       |
 | `Listbox`/`Option`     | ARIA listbox semantics, selected/active visuals                         | Select, Combobox, Autocomplete |
 | `Tag`                  | removable chip                                                          | TagInput, Filters              |
 | `useControllableState` | controlled/uncontrolled value                                           | every stateful input           |
@@ -45,7 +45,33 @@ src/
 3. [x] Theme tokens + typed theme
 4. [x] Primitives with stories
 5. [x] Hooks
+6. [x] MultiSelect (~10 props, controlled + uncontrolled, tags, keyboard, ARIA)
+7. [x] Stories: Default, Preselected, Disabled, Error, LongList, Controlled
+8. [x] RTL tests: click select/deselect, keyboard, tag removal
+9. [x] Document discoveries + outstanding tasks
 
 ### Out of scope (next steps)
 
 Search / combobox filtering, option groups, async options, virtualisation, select-all, max selections.
+
+## 2. Decisions & trade-offs
+
+- **WAI-ARIA combobox + listbox**: focus stays on the trigger and `aria-activedescendant` points to the active option.
+- **Selection is a `string[]`, not a `Set`**: it is simple to pass to `onChange` and works like native `<select multiple>`; values stay in option order.
+- **Selected values show as `Tag`s inside the `InputBox`**; the remove button stops the click so the list does not open or close.
+- **Controlled and uncontrolled** with `useControllableState` (`value` / `defaultValue` / `onChange`), like native inputs.
+- **Escape is handled in one place**: only the component closes the list with `useDisclosure` (Escape, Tab, blur); `Popover` handles outside click and renders in a portal so `overflow: hidden` can't cut it.
+
+## 3. Discoveries
+
+- Option and box clicks must `preventDefault` on `mousedown`, or the trigger blurs and the list closes before the click lands.
+- Extracting the hooks before the component made `MultiSelect` mostly wiring, and each behaviour is testable on its own.
+- Typing `DefaultTheme` in `styled.d.ts` turns a wrong token name into a compile error instead of a silent `undefined`.
+- RTL's `userEvent` plus `aria-activedescendant` lookups test keyboard flows the way a screen reader experiences them.
+
+## 4. Outstanding tasks
+
+- Stories: Preselected, Disabled, Error, LongList.
+- Backspace on an empty trigger removes the last tag.
+- Move the popover on scroll/resize and open it above when there is no space below.
+- Tests for error text and the disabled state, plus barrel exports and a library build.

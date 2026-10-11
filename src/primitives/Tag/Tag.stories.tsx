@@ -5,7 +5,7 @@ import { Tag } from "./Tag";
 const meta = {
   title: "Primitives/Tag",
   component: Tag,
-  args: { children: "Cherry" },
+  args: { children: "React" },
 } satisfies Meta<typeof Tag>;
 
 export default meta;

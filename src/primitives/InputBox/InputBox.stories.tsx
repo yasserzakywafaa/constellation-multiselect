@@ -78,12 +78,12 @@ export const Invalid: Story = {
 export const WithContent: Story = {
   render: (args) => (
     <Field
-      label="Favourite fruits"
-      helperText="Any child can live inside the box."
+      label="Tech Stack for Yasser"
+      helperText="Any child can live inside the box. Like Yasser's tech stack."
     >
       <InputBox {...args}>
-        <DemoChip>Apple</DemoChip>
-        <DemoChip>Cherry</DemoChip>
+        <DemoChip>React</DemoChip>
+        <DemoChip>TypeScript</DemoChip>
         <ConnectedInput />
       </InputBox>
     </Field>

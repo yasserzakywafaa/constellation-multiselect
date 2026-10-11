@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Listbox, Option } from "./Listbox";
+import { Listbox, Option as ListBoxOption } from "./Listbox";
+import options from "../../shared/options";
 
 const meta = {
   title: "Primitives/Listbox",
@@ -12,19 +13,18 @@ type Story = StoryObj<typeof meta>;
 export const MultiSelectable: Story = {
   args: { children: null },
   render: () => (
-    <Listbox multiselectable aria-label="Fruits">
-      <Option id="fruit-apple" showCheck selected>
-        Apple
-      </Option>
-      <Option id="fruit-banana" showCheck active>
-        Banana (active)
-      </Option>
-      <Option id="fruit-cherry" showCheck>
-        Cherry
-      </Option>
-      <Option id="fruit-durian" showCheck disabled>
-        Durian (disabled)
-      </Option>
+    <Listbox multiselectable aria-label="Tech Stack">
+      {options.map((option) => (
+        <ListBoxOption
+          id={option.value}
+          showCheck={option.disabled ? false : true}
+          selected={option.value === "react" ? true : false}
+          active={option.value === "nodejs" ? true : false}
+          disabled={option.disabled ? true : false}
+        >
+          {option.label}
+        </ListBoxOption>
+      ))}
     </Listbox>
   ),
 };
@@ -32,12 +32,17 @@ export const MultiSelectable: Story = {
 export const SingleSelect: Story = {
   args: { children: null },
   render: () => (
-    <Listbox aria-label="Fruit">
-      <Option id="single-apple">Apple</Option>
-      <Option id="single-banana" selected active>
-        Banana
-      </Option>
-      <Option id="single-cherry">Cherry</Option>
+    <Listbox aria-label="Tech Stack">
+      {options.map((option) => (
+        <ListBoxOption
+          id={option.value}
+          selected={option.value === "react" ? true : false}
+          active={option.value === "nodejs" ? true : false}
+          disabled={option.disabled ? true : false}
+        >
+          {option.label}
+        </ListBoxOption>
+      ))}
     </Listbox>
   ),
 };
