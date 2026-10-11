@@ -37,3 +37,15 @@ src/
 | `useControllableState` | controlled/uncontrolled value                                           | every stateful input           |
 | `useDisclosure`        | open state                                                              | Popover, Accordion, Dialog     |
 | `useListNavigation`    | arrows, Home/End, Enter/Space, Escape                                   | Listbox, Menu, Tabs            |
+
+### Task list
+
+1. [x] README plan (this)
+2. [ ] Tooling: Yarn, TS, Storybook 8, Vitest + RTL, ESLint
+3. [ ] Theme tokens + typed theme
+4. [ ] Primitives with stories
+5. [ ] Hooks
+
+### Out of scope (next steps)
+
+Search / combobox filtering, option groups, async options, virtualisation, select-all, max selections.
