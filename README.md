@@ -41,9 +41,9 @@ src/
 ### Task list
 
 1. [x] README plan (this)
-2. [ ] Tooling: Yarn, TS, Storybook 8, Vitest + RTL, ESLint
-3. [ ] Theme tokens + typed theme
-4. [ ] Primitives with stories
+2. [x] Tooling: Yarn, TS, Storybook 8, Vitest + RTL, ESLint
+3. [x] Theme tokens + typed theme
+4. [x] Primitives with stories
 5. [ ] Hooks
 
 ### Out of scope (next steps)
