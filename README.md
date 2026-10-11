@@ -3,12 +3,16 @@
 A small, slightly obsessive design-system challenge, written for my friends at
 [Constellation Automotive](https://www.constellationautomotive.com/).
 
-You already know how to ship product. This one is the other job: a custom
-**Multi-Select** that could live in a real design system — composed, accessible,
-and themeable, so the next control starts from the same pieces.
-
 **Stack:** React 18 · Styled Components 6 · TypeScript 5 · Storybook 8 · Vitest +
 React Testing Library · Yarn
+
+---
+
+> # [Open the live Storybook](https://constellation-multiselect.vercel.app/)
+>
+> https://constellation-multiselect.vercel.app/
+
+---
 
 ## 1. Plan
 
@@ -85,6 +89,6 @@ Search / combobox filtering, option groups, async options, virtualisation, selec
 
 ---
 
-Have a look around Storybook, the interesting bits are in the `primitives`. 👋
+Have a look around the [live Storybook](https://constellation-multiselect.vercel.app/), the interesting bits are in the `primitives`. 👋
 
 Made with love and coffee ☕ by [Yasser](https://www.yasserzaky.com), for my friends at [Constellation Automotive](https://www.constellationautomotive.com/).
